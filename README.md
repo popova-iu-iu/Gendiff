@@ -5,4 +5,4 @@
 
 run: gendiff file1.json file2.json
 
-[![asciicast](https://asciinema.org/connect/cadf7c82-32d7-42a6-b813-6ed24abdf7d6.svg)](https://asciinema.org/connect/cadf7c82-32d7-42a6-b813-6ed24abdf7d6)
+[![asciicast](https://asciinema.org/a/dQeSFUDPB1jdPu7Txl9IGJrJi.svg)](https://asciinema.org/a/dQeSFUDPB1jdPu7Txl9IGJrJi)
