@@ -1,29 +1,18 @@
-import { test, expect } from '@jest/globals';
+import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
-import * as path from 'path';
-import { dirname } from 'path';
-import genDiff from '../src/index';
+import genDiff from '../src/index.js';
 
-test('gendiffTest', () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-  const getFixturePathFile1 = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-  const pathToFile1 = getFixturePathFile1('file1.json');
-  const pathToFile2 = getFixturePathFile1('file2.json');
+test('check diff', () => {
+  const file1Path = getFixturePath('file1.json');
+  const file2Path = getFixturePath('file2.json');
 
-  const data = [
-    '  - follow: false',
-    '  host: hexlet.io',
-    '  - proxy: 123.234.53.22',
-    '  - timeout: 50',
-    '  + timeout: 20',
-    '  + verbose: true',
-  ];
-
-  const expected = ['{', ...data, '}'].join('\n');
-  // console.log(expected);
-
-  expect(genDiff(pathToFile1, pathToFile2)).toBe(expected);
+  const actual = genDiff(file1Path, file2Path);
+  const plain = readFile('plain.txt');
+  expect(actual).toEqual(plain);
 });
