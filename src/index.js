@@ -1,43 +1,26 @@
-import _ from 'lodash';
 import * as path from 'path';
 import { readFileSync } from 'fs';
 import parse from './parsers.js';
+import buildTree from './buildDiff.js';
+import getFormat from './formatters/index.js';
 
-// const parseFile = (filepath) => {
-//   const path = isAbsolute(filepath) ? filepath : resolve(filepath);
-//   const file = fs.readFileSync(path, 'utf-8');
-//   return parse(file);
-// };
+const getPath = (file) => path.resolve(process.cwd(), file);
 
-const prepareData = (file) => readFileSync(path.resolve(file));
+const readFile = (filepath) => readFileSync(filepath, 'utf-8');
 
-const getData = (file) => {
-  const readyData = prepareData(file);
-  const parseMethod = parse(file);
+const getFileFormat = (file) => path.extname(file).slice(1);
 
-  return parseMethod(readyData);
-};
+const genDiff = (file1, file2, format = 'stylish') => {
+  const path1 = getPath(file1);
+  const path2 = getPath(file2);
 
-const genDiff = (filepath1, filepath2) => {
-  const file1 = getData(filepath1);
-  const file2 = getData(filepath2);
-  const keys = Object.keys({ ...file1, ...file2 });
+  const object1 = parse(readFile(path1), getFileFormat(file1));
+  const object2 = parse(readFile(path2), getFileFormat(file2));
 
-  const result = _.sortBy(keys, (key) => key)
-    .map((key) => {
-      if (!_.has(file2, key)) {
-        return `- ${key}: ${file1[key]}`;
-      }
-      if (!_.has(file1, key)) {
-        return `+ ${key}: ${file2[key]}`;
-      }
-      if (file1[key] === file2[key]) {
-        return `  ${key}: ${file1[key]}`;
-      }
-      return `- ${key}: ${file1[key]}\n + ${key}: ${file2[key]}`;
-    })
-    .join('\n ');
-  return `{\n ${result}\n}`;
+  const diff = buildTree(object1, object2);
+  const diffFormat = getFormat(diff, format);
+
+  return diffFormat;
 };
 
 export default genDiff;
