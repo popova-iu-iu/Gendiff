@@ -6,7 +6,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7f4267c8623d9f28cddd/test_coverage)](https://codeclimate.com/github/popova-iu-iu/frontend-project-lvl2/test_coverage)
 
 
-[![Node CI](https://github.com/popova-iu-iu/frontend-project-lvl2/nodejs-package/workflows/Node%20CI/badge.svg)](https://github.com/popova-iu-iu/frontend-project-lvl2/nodejs-package/actions)
+[![Node CI](https://github.com/popova-iu-iu/frontend-project-lvl2/workflows/Node%20CI/badge.svg)](https://github.com/popova-iu-iu/frontend-project-lvl2/actions)
 
 #### gendiff
 
