@@ -10,9 +10,9 @@ const stringify = (node, depth = 1) => {
   const keys = Object.keys(node);
   const result = keys.map((key) => {
     const value = node[key];
-    return `${space(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`
-  })
-  
+    return `${space(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`;
+  });
+
   return `{\n${result.join('\n')}\n  ${space(depth)}}`;
 };
 
@@ -25,34 +25,34 @@ const stylish = (tree) => {
       children,
       value1,
       value2,
-    } = node
-  
-  switch (type) {
-    case 'main': {
-      const result = children.flatMap((child) => iter(child, depth + 1));
-      return `{\n${result.join('\n')}\n}`;
+    } = node;
+
+    switch (type) {
+      case 'main': {
+        const result = children.flatMap((child) => iter(child, depth + 1));
+        return `{\n${result.join('\n')}\n}`;
+      }
+      case 'nested': {
+        const result = children.flatMap((child) => iter(child, depth + 1));
+        return `${space(depth)}  ${key}: {\n${result.join('\n')}\n${space(depth)}  }`;
+      }
+      case 'added': {
+        return `${space(depth)}+ ${key}: ${stringify(value, depth)}`;
+      }
+      case 'deleted': {
+        return `${space(depth)}- ${key}: ${stringify(node.value, depth)}`;
+      }
+      case 'unupdated':
+        return `${space(depth)}  ${key}: ${stringify(value, depth)}`;
+      case 'different': {
+        const data1 = `${space(depth)}- ${key}: ${stringify(value1, depth)}`;
+        const data2 = `${space(depth)}+ ${key}: ${stringify(value2, depth)}`;
+        return `${data1}\n${data2}`;
+      }
+      default:
+        throw new Error(`Unknown type: ${type}`);
     }
-    case 'nested': {
-      const result = children.flatMap((child) => iter(child, depth + 1));
-      return `${space(depth)}  ${key}: {\n${result.join('\n')}\n${space(depth)}  }`;
-    }
-    case 'added': {
-      return `${space(depth)}+ ${key}: ${stringify(value, depth)}`;
-    }
-    case 'deleted': {
-      return `${space(depth)}- ${key}: ${stringify(node.value, depth)}`;
-    }
-    case 'unupdated':
-      return `${space(depth)}  ${key}: ${stringify(value, depth)}`;
-    case 'different': {
-      const data1 = `${space(depth)}- ${key}: ${stringify(value1, depth)}`;
-      const data2 = `${space(depth)}+ ${key}: ${stringify(value2, depth)}`;
-      return `${data1}\n${data2}`;
-    }
-    default:
-      throw new Error(`Unknown type: ${type}`);
-  }
-};
+  };
 
   return iter(tree);
 };
