@@ -8,9 +8,13 @@
 
 [![Node CI](https://github.com/popova-iu-iu/frontend-project-lvl2/workflows/Node%20CI/badge.svg)](https://github.com/popova-iu-iu/frontend-project-lvl2/actions)
 
-#### gendiff
 
-run: gendiff file1.json file2.json
+
+[![asciicast](https://asciinema.org/a/dZQKz21sIl1eYKvILvV2nYt6y.svg)](https://asciinema.org/a/dZQKz21sIl1eYKvILvV2nYt6y)
+
+[![asciicast](https://asciinema.org/a/rNGyIKxivYSUzWLmbcz1tIKjP.svg)](https://asciinema.org/a/rNGyIKxivYSUzWLmbcz1tIKjP)
+
+[![asciicast](https://asciinema.org/a/XM6DsoOvzaZYxGMK25J3lVYsh.svg)](https://asciinema.org/a/XM6DsoOvzaZYxGMK25J3lVYsh)
 
 [![asciicast](https://asciinema.org/a/fvKk5IqNBk6q28C4wWrTyG1NM.svg)](https://asciinema.org/a/fvKk5IqNBk6q28C4wWrTyG1NM)
 
