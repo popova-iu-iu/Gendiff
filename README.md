@@ -14,13 +14,13 @@ The project implements a utility to find differences in configuration files.
 
 ##### Setup
 1. Clone this repository
- git clone git@github.com:popova-iu-iu/frontend-project-lvl2.git
+> git clone git@github.com:popova-iu-iu/frontend-project-lvl2.git
  
 2. Install dependenses
- make install
+> make install
  
 3. Link the package
-make lint
+> make lint
  
  
 ##### Examples
