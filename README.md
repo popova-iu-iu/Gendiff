@@ -8,22 +8,22 @@
 
 [![Node CI](https://github.com/popova-iu-iu/frontend-project-lvl2/workflows/Node%20CI/badge.svg)](https://github.com/popova-iu-iu/frontend-project-lvl2/actions)
 
-### Gendiff
-##### Description
+## Gendiff
+#### Description
 The project implements a utility to find differences in configuration files.
 
-##### Setup
+#### Setup
 1. Clone this repository
-> git clone git@github.com:popova-iu-iu/frontend-project-lvl2.git
+ > git clone git@github.com:popova-iu-iu/frontend-project-lvl2.git
  
 2. Install dependenses
-> make install
+ > make install
  
 3. Link the package
-> make lint
+ > make lint
  
  
-##### Examples
+#### Examples
 [![asciicast](https://asciinema.org/a/dZQKz21sIl1eYKvILvV2nYt6y.svg)](https://asciinema.org/a/dZQKz21sIl1eYKvILvV2nYt6y)
 
 [![asciicast](https://asciinema.org/a/rNGyIKxivYSUzWLmbcz1tIKjP.svg)](https://asciinema.org/a/rNGyIKxivYSUzWLmbcz1tIKjP)
