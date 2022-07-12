@@ -45,6 +45,36 @@ gendiff file1.json file2.json
 ```
 [![asciicast](https://asciinema.org/a/rNGyIKxivYSUzWLmbcz1tIKjP.svg)](https://asciinema.org/a/rNGyIKxivYSUzWLmbcz1tIKjP)
 
+# Flat file
+
+file1:
+
+```
+{
+  "host": "hexlet.io",
+  "timeout": 50,
+  "proxy": "123.234.53.22",
+  "follow": false
+}
+```
+
+file2:
+
+```
+{
+  "timeout": 20,
+  "verbose": true,
+  "host": "hexlet.io"
+}
+```
+
+```
+gendiff 'file1.json' 'file2.json'
+```
+
 [![asciicast](https://asciinema.org/a/fvKk5IqNBk6q28C4wWrTyG1NM.svg)](https://asciinema.org/a/fvKk5IqNBk6q28C4wWrTyG1NM)
 
+```
+gendiff 'file3.yml' 'file4.yml'
+```
 [![asciicast](https://asciinema.org/a/hFQwAEhjNTIBXndtXJAgY4dDv.svg)](https://asciinema.org/a/hFQwAEhjNTIBXndtXJAgY4dDv)
