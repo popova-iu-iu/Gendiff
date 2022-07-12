@@ -45,7 +45,7 @@ gendiff file1.json file2.json
 ```
 [![asciicast](https://asciinema.org/a/rNGyIKxivYSUzWLmbcz1tIKjP.svg)](https://asciinema.org/a/rNGyIKxivYSUzWLmbcz1tIKjP)
 
-# Flat file
+#### Flat file
 
 file1:
 
