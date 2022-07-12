@@ -7,29 +7,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
-test('json', () => {
-  const expected = readFileSync(getFixturePath('diffTest.txt'), 'utf-8');
-  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
-  expect(result).toEqual(expected);
-});
+const expectedStylish = readFile('resultStylish.txt');
+const expectedPlain = readFile('resultPlain.txt');
+const expectedJson = readFile('resultJson.txt');
 
-test('yml', () => {
-  const expected = readFileSync(getFixturePath('diffTest.txt'), 'utf-8');
-  const result = genDiff(getFixturePath('file3.yml'), getFixturePath('file4.yaml'));
-  expect(result).toEqual(expected);
-});
+const extensions = ['yml', 'json'];
 
-test('plain test', () => {
-  const expected = readFileSync(getFixturePath('plain.txt'), 'utf-8');
-
-  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain');
-  expect(result).toEqual(expected);
-});
-
-test('json test', () => {
-  const expected = readFileSync(getFixturePath('json.txt'), 'utf-8');
-
-  const result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json');
-  expect(result).toEqual(expected);
+test.each(extensions)('test %p', (extension) => {
+  const beforePath = getFixturePath(`fileBefore.${extension}`);
+  const afterPath = getFixturePath(`fileAfter.${extension}`);
+  expect(genDiff(beforePath, afterPath, 'stylish')).toBe(expectedStylish);
+  expect(genDiff(beforePath, afterPath, 'plain')).toBe(expectedPlain);
+  expect(genDiff(beforePath, afterPath, 'json')).toBe(expectedJson);
+  expect(genDiff(beforePath, afterPath)).toBe(expectedStylish);
 });
