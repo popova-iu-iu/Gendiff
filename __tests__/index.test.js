@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { readFileSync } from 'fs';
+import { describe } from '@jest/globals';
 import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,11 +16,14 @@ const expectedJson = readFile('resultJson.txt');
 
 const extensions = ['yml', 'json'];
 
-test.each(extensions)('test %p', (extension) => {
-  const beforePath = getFixturePath(`fileBefore.${extension}`);
-  const afterPath = getFixturePath(`fileAfter.${extension}`);
-  expect(genDiff(beforePath, afterPath, 'stylish')).toBe(expectedStylish);
-  expect(genDiff(beforePath, afterPath, 'plain')).toBe(expectedPlain);
-  expect(genDiff(beforePath, afterPath, 'json')).toBe(expectedJson);
-  expect(genDiff(beforePath, afterPath)).toBe(expectedStylish);
+describe('TEST', () => {
+  test.each(extensions)('test %p', (extension) => {
+    const beforePath = getFixturePath(`fileBefore.${extension}`);
+    const afterPath = getFixturePath(`fileAfter.${extension}`);
+
+    expect(genDiff(beforePath, afterPath, 'stylish')).toBe(expectedStylish);
+    expect(genDiff(beforePath, afterPath, 'plain')).toBe(expectedPlain);
+    expect(genDiff(beforePath, afterPath, 'json')).toBe(expectedJson);
+    expect(genDiff(beforePath, afterPath)).toBe(expectedStylish);
+  });
 });
