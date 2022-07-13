@@ -21,9 +21,9 @@ describe('TEST', () => {
     const beforePath = getFixturePath(`fileBefore.${extension}`);
     const afterPath = getFixturePath(`fileAfter.${extension}`);
 
-    expect(genDiff(beforePath, afterPath, 'stylish')).toBe(expectedStylish);
-    expect(genDiff(beforePath, afterPath, 'plain')).toBe(expectedPlain);
-    expect(genDiff(beforePath, afterPath, 'json')).toBe(expectedJson);
-    expect(genDiff(beforePath, afterPath)).toBe(expectedStylish);
+    expect(genDiff(beforePath, afterPath, 'stylish')).toEqual(expectedStylish);
+    expect(genDiff(beforePath, afterPath, 'plain')).toEqual(expectedPlain);
+    expect(genDiff(beforePath, afterPath, 'json')).toEqual(expectedJson);
+    expect(genDiff(beforePath, afterPath)).toEqual(expectedStylish);
   });
 });
